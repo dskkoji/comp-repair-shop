@@ -37,7 +37,6 @@ import { useState, useEffect, useMemo } from 'react'
 import { usePolling } from '@/hooks/usePolling'
 import { Button } from '@/components/ui/button'
 import Filter from '@/components/react-table/Filter'
-import { Value } from '@radix-ui/react-select'
 
 type Props = {
   data: TicketSearchResultsType
@@ -64,7 +63,7 @@ export default function TicketTable({ data }: Props) {
   const pageIndex = useMemo(() => {
     const page = searchParams.get("page")
     return page ? parseInt(page) - 1 : 0
-  }, [searchParams.get("page")]) // eslint-disabled-line react-hooks/exhaustive-deps
+  }, [searchParams.get("page")]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const columnHeadersArray: Array<keyof RowType> = [
     "ticketDate",
@@ -172,7 +171,7 @@ export default function TicketTable({ data }: Props) {
       params.set('page', '1')
       router.replace(`?${params.toString()}`, { scroll: false })
     }
-  }, [table.getState().columnFilters]) // eslint-disable-line react-hooks/exhasustive-deps
+  }, [table.getState().columnFilters]) // eslint-disable-line react-hooks/exhaustive-deps
 
 
   return (
